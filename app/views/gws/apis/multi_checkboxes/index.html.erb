@@ -57,9 +57,9 @@
   <thead class="message-list-head">
     <tr>
       <% if @multi %>
-      <th class="checkbox-to-all"><input type="checkbox" /></th>
-      <th class="checkbox-cc-all"><input type="checkbox" /></th>
-      <th class="checkbox-bcc-all"><input type="checkbox" /></th>
+        <th class="checkbox-to-all">TO<input type="checkbox" /></th>
+        <th class="checkbox-cc-all">CC<input type="checkbox" /></th>
+        <th class="checkbox-bcc-all">BCC<input type="checkbox" /></th>
       <% end %>
       <th class="name"><%= @model.t :name %></th>
       <th><%= @model.t :group_ids %></th>
