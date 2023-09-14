@@ -18,7 +18,7 @@
 
       <dt><%= t "ss.keyword" %></dt>
       <dd>
-        <%= f.text_field :keyword, value: params.dig(:s, :keyword) %>
+        <%= f.text_field :keyword, value: params[:s].try(:[], :keyword) %>
         <%= f.submit  t("ss.buttons.search"), class: :btn %>
       </dd>
     </dl>
@@ -26,7 +26,7 @@
 </div>
 
 <table class="index">
-  <thead class="list-head">
+  <thead class="message-list-head">
     <tr>
       <% if @multi %>
       <th class="checkbox-to-all">TO<input type="checkbox" /></th>
@@ -39,7 +39,7 @@
   </thead>
   <tbody class="items">
     <% @items.each do |item| %>
-      <tr class="list-item" data-id="<%= item.id %>" data-name="<%= item.name %>" data-email="<%= item.email_address %>" data-address="<%= item.email %>">
+      <tr class="list-item" data-id="<%= item.id %>" data-name="<%= item.name %>" data-email="<%= item.email_address %>">
         <% if @multi %>
         <td class="to-checkbox"><input type="checkbox" name="ids[]" value="<%= item.id %>" /></td>
         <td class="cc-checkbox"><input type="checkbox" name="ids[]" value="<%= item.id %>" /></td>
