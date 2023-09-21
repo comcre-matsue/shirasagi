@@ -411,15 +411,13 @@ module SS::Model::User
   end
 
   def chenge_ldap_password
-    Rails.logger.error("chenge_ldap_password ====================================================")
     return true unless self.type == TYPE_LDAP
     return true if self.in_password.blank?
     username = self.ldap_dn
     new_password = self.in_password
     result = Ldap::Connection.change_password(username: username, new_password: new_password)
-    self.errors.add :update_ldap_password unless result
-    Rails.logger.error("chenge_ldap_password result:#{result}====================================================")
-    result
+    errors.add :base, I18n.t("ldap.errors.update_ldap_password")
+    return throw :abort unless result
   end
 
 end
